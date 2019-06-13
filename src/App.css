@@ -71,3 +71,9 @@
   color:olive;
 }
 
+.searchExpeneses{
+  border-width: 1px;   
+  padding:7px 60px 2px 60px;
+  color: olive;
+  border-style: solid; 
+}
