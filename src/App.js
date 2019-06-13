@@ -4,9 +4,33 @@ import './App.css';
 import Header from './components/Header';
 import AddExpenses from './components/AddExpenses';
 import SearchExpenses from './components/SearchExpenses';
+import ExpensesList from './components/ExpensesList';
+import ExpensesTotal from './components/ExpensesTotal';
 
 
 class App extends Component {
+  state = {
+    ListofItems: [
+      {
+        "Expenses": "TutionFees", "date": "2019-06-10", "Category": "Eduction", "Status": "Paid", "Payment": "Card",
+        "Notes": "Englisgh", "Amount": 100
+      },
+      {
+        "Expenses": "WaterBill", "date": "2019-06-07", "Category": "Bill", "Status": "UnPaid", "Payment": "Cash",
+        "Notes": "Veollio", "Amount": 120
+      },
+      {
+        "Expenses": "Mortgage", "date": "2019-06-09", "Category": "Loan", "Status": "Paid", "Payment": "Card",
+        "Notes": "Housing Loan", "Amount": 1200
+      }],
+
+    total: [1420]
+  };
+
+
+  onDeleteClicked = (rowNum) => {
+    alert("delete Clicked");
+  }
 
 
   render() {
@@ -23,8 +47,40 @@ class App extends Component {
         <div className="row">
           <SearchExpenses />
         </div>
+        <div><br></br></div>
+        <div className="row expensesList">
+          <div className="col">Expenses</div>
+          <div className="col">Exp Date</div>
+          <div className="col">Category</div>
+          <div className="col">Status</div>
+          <div className="col">Payment</div>
+          <div className="col">Notes</div>
+          <div className="col">Amount</div>
+          <div className="coll">Update</div>
+          <div className="coll">Delete</div>
+          <div className="container ">
+            {
+              this.state.ListofItems.map((item, index) => {
+                return <ExpensesList
+                  Expenses={item.Expenses}
+                  date={item.date}
+                  Category={item.Category}
+                  Status={item.Status}
+                  Payment={item.Payment}
+                  Notes={item.Notes}
+                  Amount={item.Amount}
+                  Delete={this.onDeleteClicked}
+                  key={index}
+                  rowNum={index}
+                />
+              })
+            }
+          </div>
+        </div>
+        <div className="row total">
+          <ExpensesTotal totalAmount={this.state.total}
+          /></div>
       </div>
-
     );
 
   }
