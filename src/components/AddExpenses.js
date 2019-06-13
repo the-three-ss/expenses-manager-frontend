@@ -8,9 +8,10 @@ class AddExpenses extends Component {
         PaymentType: "",
         Notes: "",
         Status: "",
-        Category: ""
+        Category:""
     }
     onSaveClicked = (event) => {
+        alert("save Clicked");
         
     }
     onCancelClicked = (event) => {
