@@ -27,12 +27,47 @@ class App extends Component {
     total: [1420]
   };
 
+  addExpenses = (newText, newCategory, newDate, newAmount, newPaymentType, newNotes, newStatus) => {
 
-  onDeleteClicked = (rowNum) => {
-    alert("delete Clicked");
+    const currentListofExpenses = this.state.ListofItems;
+
+    const newExpenses = {
+      Expenses: newText,
+      date: newDate,
+      Category: newCategory,
+      Status: newStatus,
+      Payment: newPaymentType,
+      Notes: newNotes,
+      Amount: newAmount
+    };
+
+    currentListofExpenses.push(newExpenses);
+    this.setState({
+      ListofItems: currentListofExpenses
+    })
   }
 
 
+
+  onDeleteClicked = (rowNum) => {
+    let currentDeleteTask = this.state.ListofItems;
+    currentDeleteTask.splice(rowNum, 1);
+    this.setState({ ListofItems: currentDeleteTask });
+    this.totalExpAmt();
+  }
+
+  totalExpAmt = () => {
+    let data = this.state.ListofItems;
+    if (data) {
+      let result = 0;
+      data.forEach(element => {
+        result += parseFloat(element.Amount);
+      });
+      this.setState({ total: result });
+    }
+  }
+
+  
   render() {
     return (
       <div className="container">
@@ -41,7 +76,7 @@ class App extends Component {
         </div>
         <div><br></br></div>
         <div className="row">
-          <AddExpenses />
+          <AddExpenses addExpenses={this.addExpenses.bind(this)} />
         </div>
         <div><br></br></div>
         <div className="row">
