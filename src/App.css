@@ -50,7 +50,6 @@
   align-content:center; 
 }
 
-
 .input-group-text{
   color:olive;
 }
@@ -59,7 +58,7 @@
   color: olive;
  }
 
- .form-control:focus {
+.form-control:focus {
   border: 2px solid olive;
   height: 10%;
 }
@@ -71,3 +70,35 @@
   color:olive;
 }
 
+.searchExpeneses{
+  border-width: 1px;   
+  padding:7px 60px 2px 60px;
+  color: olive;
+  border-style: solid; 
+}
+
+.expensesList{
+  border-style: solid; 
+  border-width: 1px;  
+  color: olive;
+  border-collapse: separate;
+  border-spacing: 3px; 
+}
+
+.col {
+  width: 50%;
+  overflow:hidden; 
+}
+
+.coll{
+  width:10%;  
+}
+
+.total{ 
+  border: 2px solid olive;
+  margin-left: 67%;
+}
+
+.divheight {
+  height: 35%;
+}
