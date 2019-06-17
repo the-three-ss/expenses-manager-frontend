@@ -26,10 +26,7 @@ class AddExpenses extends Component {
 
     }
 
-    onNotesChanged = (event) => {
-        this.setState({ Notes: event.target.value });
 
-    }
 
     onPaymentChanged = (event) => {
         this.setState({ PaymentType: event.target.value });
@@ -67,11 +64,12 @@ class AddExpenses extends Component {
                             <span class="input-group-text" id="basic-addon1" for="ExpensesCategory">Category
                                 <select class="form-control" id="ExpensesCategory" onChange={this.onCategoryChanged} value={this.state.Category}>
                                     <option>Select</option>
-                                    <option>Bill</option>
-                                    <option>Loan</option>
+                                    <option>Food</option>
+                                    <option>Travel</option>
                                     <option>Education</option>
                                     <option>Holiday</option>
-                                    <option>Party</option>
+                                    <option>Shopping</option>
+                                    <option>Home</option>
                                 </select></span>
                         </div>
                     </div>

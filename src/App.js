@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import AddExpenses from './components/AddExpenses';
+import DisplayExpenses from './components/DisplayExpenses'
 
 
 class App extends Component {
@@ -18,8 +19,12 @@ class App extends Component {
         <div className="row">
           <AddExpenses />
         </div>
+        <div className="row">
+          <DisplayExpenses />
+        </div>
+        
       </div>
-
+      
     );
 
   }
