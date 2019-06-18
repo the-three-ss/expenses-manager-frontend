@@ -47,7 +47,9 @@ class App extends Component {
     })
   }
 
-
+  onUpdateClicked=(rowNum)=>{
+    
+  }
 
   onDeleteClicked = (rowNum) => {
     let currentDeleteTask = this.state.ListofItems;
@@ -83,16 +85,16 @@ class App extends Component {
           <SearchExpenses />
         </div>
         <div><br></br></div>
-        <div className="row expensesList">
-          <div className="col">Expenses</div>
-          <div className="col">Exp Date</div>
-          <div className="col">Category</div>
-          <div className="col">Status</div>
-          <div className="col">Payment</div>
-          <div className="col">Notes</div>
-          <div className="col">Amount</div>
-          <div className="coll">Update</div>
-          <div className="coll">Delete</div>
+        <div className="row expensesList"  >
+          <div className="col bold">Expenses</div>
+          <div className="col bold">Exp Date</div>
+          <div className="col bold">Category</div>
+          <div className="col bold">Status</div>
+          <div className="col bold">Payment</div>
+          <div className="col bold">Notes</div>
+          <div className="col bold">Amount</div>
+          <div className="coll bold"></div>
+          <div className="coll "></div>
           <div className="container ">
             {
               this.state.ListofItems.map((item, index) => {
@@ -104,6 +106,8 @@ class App extends Component {
                   Payment={item.Payment}
                   Notes={item.Notes}
                   Amount={item.Amount}
+                  
+                  Update={this.onUpdateClicked}
                   Delete={this.onDeleteClicked}
                   key={index}
                   rowNum={index}

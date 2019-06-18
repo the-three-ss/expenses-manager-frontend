@@ -4,7 +4,7 @@ class ExpensesList extends Component {
     render() {
         return (
             <div>
-                <div className="row expensesList">
+                <div className="row expensesList ">
 
                     <div className="col">
                         {this.props.Expenses}
@@ -27,13 +27,18 @@ class ExpensesList extends Component {
                     <div className="col">
                         {this.props.Amount}
                     </div>
+                    
+                    <div className="col">
+                    <button type="button" onClick={()=>this.props.update(this.props.rowNum)}  >
+                    <i class="fa fa-edit"></i></button>
+                </div>
+                <div className="col-md-1 col-sm-6" >
+                    <button type="button" onClick={()=>this.props.Delete.bind(this.props.rowNum)} >
+                    <i class="fa fa-trash"></i>
 
-                    <div className="coll">
-                        <i class="material-icons" >update</i>
-                    </div>
-                    <div className="coll">
-                        <i class="material-icons" onClick={this.props.Delete.bind(this, this.props.rowNum)}>delete</i>
-                    </div>
+                    </button>
+                </div>
+                    
                 </div>
             </div>
 
