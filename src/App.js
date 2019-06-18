@@ -6,44 +6,56 @@ import AddExpenses from './components/AddExpenses';
 import SearchExpenses from './components/SearchExpenses';
 import ExpensesList from './components/ExpensesList';
 import ExpensesTotal from './components/ExpensesTotal';
-
+import axios from 'axios';
 
 class App extends Component {
   state = {
-    ListofItems: [
-      {
-        "Expenses": "TutionFees", "date": "2019-06-10", "Category": "Eduction", "Status": "Paid", "Payment": "Card",
-        "Notes": "Englisgh", "Amount": 100
-      },
-      {
-        "Expenses": "WaterBill", "date": "2019-06-07", "Category": "Bill", "Status": "UnPaid", "Payment": "Cash",
-        "Notes": "Veollio", "Amount": 120
-      },
-      {
-        "Expenses": "Mortgage", "date": "2019-06-09", "Category": "Loan", "Status": "Paid", "Payment": "Card",
-        "Notes": "Housing Loan", "Amount": 1200
-      }],
-
-    total: [1420]
+    listofItems: [],
+    total: 0
   };
+
+  apiEndpoint = "https://qlv8kacvn9.execute-api.eu-west-2.amazonaws.com/dev/expenses";
+
+  componentDidMount = () => {    
+    axios.get(this.apiEndpoint)
+      .then(result => {
+        this.setState({
+          listofItems: result.data.expenses
+        });
+        this.totalExpAmt();
+      })
+      .catch(err => {
+      });
+  }
+
 
   addExpenses = (newText, newCategory, newDate, newAmount, newPaymentType, newNotes, newStatus) => {
 
-    const currentListofExpenses = this.state.ListofItems;
-
+    const currentListofExpenses = this.state.listofItems;
+    
     const newExpenses = {
-      Expenses: newText,
-      date: newDate,
-      Category: newCategory,
-      Status: newStatus,
-      Payment: newPaymentType,
-      Notes: newNotes,
-      Amount: newAmount
+      expenses_name: newText,
+      category_name: newCategory,
+      exp_date: newDate,
+      amount: newAmount,
+      status: newStatus,
+      payment_type: newPaymentType,
+      notes: newNotes,
+      user_id: 1     
     };
 
-    currentListofExpenses.push(newExpenses);
-    this.setState({
-      ListofItems: currentListofExpenses
+    axios.post(this.apiEndpoint, newExpenses)
+    .then(result => {
+      const expensesId = result.data.expenses_id;
+     
+      newExpenses.expenses_id = expensesId;
+      currentListofExpenses.push(newExpenses);
+      this.setState({
+        listofItems: currentListofExpenses
+      })
+      this.totalExpAmt();
+    })
+    .catch(err => {
     })
   }
 
@@ -52,23 +64,22 @@ class App extends Component {
   }
 
   onDeleteClicked = (rowNum) => {
-    let currentDeleteTask = this.state.ListofItems;
+    let currentDeleteTask = this.state.listofItems;
     currentDeleteTask.splice(rowNum, 1);
-    this.setState({ ListofItems: currentDeleteTask });
+    this.setState({ listofItems: currentDeleteTask });
     this.totalExpAmt();
   }
 
   totalExpAmt = () => {
-    let data = this.state.ListofItems;
+    let data = this.state.listofItems;   
     if (data) {
       let result = 0;
       data.forEach(element => {
-        result += parseFloat(element.Amount);
+        result += parseFloat(element.amount);
       });
       this.setState({ total: result });
     }
   }
-
   
   render() {
     return (
@@ -97,20 +108,19 @@ class App extends Component {
           <div className="coll "></div>
           <div className="container ">
             {
-              this.state.ListofItems.map((item, index) => {
+              this.state.listofItems.map((item, index) => {
                 return <ExpensesList
-                  Expenses={item.Expenses}
-                  date={item.date}
-                  Category={item.Category}
-                  Status={item.Status}
-                  Payment={item.Payment}
-                  Notes={item.Notes}
-                  Amount={item.Amount}
-                  
-                  Update={this.onUpdateClicked}
-                  Delete={this.onDeleteClicked}
+                  expenses_name={item.expenses_name}
+                  exp_date={item.exp_date}
+                  category_name={item.category_name}
+                  status={item.status}
+                  payment_type={item.payment_type}
+                  notes={item.notes}
+                  amount={item.amount}
+                  delete={this.onDeleteClicked}
                   key={index}
                   rowNum={index}
+                  user_id = {item.user_id}
                 />
               })
             }

@@ -2,39 +2,46 @@ import React, { Component } from 'react';
 
 class ExpensesList extends Component {
     render() {
+        let dateFromApi = this.props.exp_date;
+        let localDate = new Date(dateFromApi);
+        let localDateString = localDate.toLocaleDateString(undefined, {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        })
         return (
             <div>
                 <div className="row expensesList ">
 
                     <div className="col">
-                        {this.props.Expenses}
+                        {this.props.expenses_name}
                     </div>
                     <div className="col">
-                        {this.props.date}
+                        {localDateString}
                     </div>
                     <div className="col">
-                        {this.props.Category}
+                        {this.props.category_name}
                     </div>
                     <div className="col">
-                        {this.props.Status}
+                        {this.props.status}
                     </div>
                     <div className="col">
-                        {this.props.Payment}
+                        {this.props.payment_type}
                     </div>
                     <div className="col">
-                        {this.props.Notes}
+                        {this.props.notes}
                     </div>
                     <div className="col">
-                        {this.props.Amount}
+                        {this.props.amount}
                     </div>
                     
                     <div className="col">
                     <button type="button" onClick={()=>this.props.update(this.props.rowNum)}  >
-                    <i class="fa fa-edit"></i></button>
+                    </button>
                 </div>
                 <div className="col-md-1 col-sm-6" >
                     <button type="button" onClick={()=>this.props.Delete.bind(this.props.rowNum)} >
-                    <i class="fa fa-trash"></i>
+                    
 
                     </button>
                 </div>
