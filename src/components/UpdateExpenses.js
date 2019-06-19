@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 
-class AddExpenses extends Component {
+class UpdateExpenses extends Component {
     state = {
-        expensesName: "",
-        date: "",
-        expAmount: "",
-        paymentType: "",
-        notes: "",
-        status: "",
-        category: ""
+        
     }
 
-    onSaveClicked = (event) => {
+    onUpdateClicked = (event) => {
         const newText = this.state.expensesName;
         const newCategory = this.state.category;
         const newDate = this.state.date;
@@ -53,16 +47,9 @@ class AddExpenses extends Component {
     }
     onPaymentChanged = (event) => {
         this.setState({ paymentType: event.target.value });
-
     }
 
     onStatusChanged = (event) => {
-        this.setState({ status: event.target.value });
-    }
-
-    onDateChange = (event) => {
-
-        this.setState({ date: event.target.value });
 
     }
 
@@ -79,13 +66,13 @@ class AddExpenses extends Component {
                     <div class="col-md-4 col-sm-6">
                         <div >
                             <span class="input-group-text" id="basic-addon1"> Expenses Name 
-                            <input type="text" class="form-control" onChange={this.onTextChanged} value={this.state.expensesName} /></span>
+                            <input type="text" class="form-control" onChange={this.onTextChanged} value={this.props.expensesName} /></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group">
                             <span class="input-group-text" id="basic-addon1" for="ExpensesCategory"> Category  
-                                <select class="form-control" id="ExpensesCategory" onChange={this.onCategoryChanged} value={this.state.category}>
+                                <select class="form-control" id="ExpensesCategory" onChange={this.onCategoryChanged} value={this.props.category}>
                                     <option>Select</option>
                                     <option>Food</option>
                                     <option>Travel</option>
@@ -100,7 +87,7 @@ class AddExpenses extends Component {
                     <div class="col-md-4 col-sm-6">
                         <div>
                             <span class="input-group-text" id="basic-addon1"> Amount 
-                            <input type="text" class="form-control" onChange={this.onAmountChanged} placeholder="0" value={this.state.expAmount} /></span>
+                            <input type="text" class="form-control" onChange={this.onAmountChanged} placeholder="0" value={this.props.expAmount} /></span>
                         </div>
                     </div>
 
@@ -110,13 +97,13 @@ class AddExpenses extends Component {
                     <div class="col-md-4 col-xs-6">
                         <div >
                             <span class="input-group-text" id="basic-addon1"> Expeneses Date 
-                            <input id="dateInput" class="form-control" type="date" onChange={this.onDateChange} value={this.state.date} /></span>
+                            <input id="dateInput" class="form-control" type="date" onChange={this.onDateChange} value={this.props.date} /></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-6">
                         <div class="form-group">
                             <span class="input-group-text" id="basic-addon1" for="PaymentType"> Payment Type 
-                            <select class="form-control" id="PaymentType" onChange={this.onPaymentChanged} value={this.state.paymentType}>
+                            <select class="form-control" id="PaymentType" onChange={this.onPaymentChanged} value={this.props.paymentType}>
                                     <option>Select</option>
                                     <option>Card</option>
                                     <option>Cash</option>
@@ -129,7 +116,7 @@ class AddExpenses extends Component {
                     <div class="col-md-4 col-xs-6">
                         <div class="form-group">
                             <span class="input-group-text" id="basic-addon1" for="ExpensesStatus"> Status 
-                            <select class="form-control" id="ExpensesStatus" onChange={this.onStatusChanged} value={this.state.status}>
+                            <select class="form-control" id="ExpensesStatus" onChange={this.onStatusChanged} value={this.props.status}>
                                     <option>Select</option>
                                     <option>Paid</option>
                                     <option>UnPaid</option>
@@ -143,12 +130,12 @@ class AddExpenses extends Component {
                 <div className="row divheight">
                     <div class="col-md-8 col-sm-6">
                         <span class="input-group-text" id="basic-addon1" for="ExpensesDetails"> Notes 
-                        <textarea class="form-control" id="ExpensesDetails" rows="1" onChange={this.onNotesChanged} value={this.state.notes}></textarea></span>
+                        <textarea class="form-control" id="ExpensesDetails" rows="1" onChange={this.onNotesChanged} value={this.props.notes}></textarea></span>
                     </div>
 
 
                     <div class="col-md-1 col-sm-6">
-                        <button type="button" class="btn btn-lg" onClick={this.onSaveClicked} > Save </button>
+                        <button type="button" class="btn btn-lg" onClick={this.onSaveClicked} > Update </button>
                     </div>
                     <div class="col-md-1 col-sm-6">
                         <button type="button" class="btn btn-lg" onClick={this.onCancelClicked}> Cancel </button>
@@ -161,4 +148,4 @@ class AddExpenses extends Component {
     }
 
 }
-export default AddExpenses;
+export default UpdateExpenses;

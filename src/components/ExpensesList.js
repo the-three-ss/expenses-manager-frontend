@@ -36,15 +36,18 @@ class ExpensesList extends Component {
                     </div>
                     
                     <div className="col">
-                    <button type="button" onClick={()=>this.props.update(this.props.rowNum)}  >
-                    </button>
+                   
                 </div>
-                <div className="col-md-1 col-sm-6" >
-                    <button type="button" onClick={()=>this.props.Delete.bind(this.props.rowNum)} >
-                    
+                
+                <button type="button" class="btn btn-outline-success"
+                     onClick={this.props.update.bind(this, this.props.expenses_id)}   >Update
+                </button> 
+                    <button type="button" class="btn btn-outline-success"
+                     onClick={this.props.delete.bind(this, this.props.expenses_id)}   >Delete
+                </button>
 
-                    </button>
-                </div>
+                    
+                
                     
                 </div>
             </div>
