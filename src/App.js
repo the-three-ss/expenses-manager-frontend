@@ -7,6 +7,7 @@ import SearchExpenses from './components/SearchExpenses';
 import ExpensesList from './components/ExpensesList';
 import ExpensesTotal from './components/ExpensesTotal';
 import axios from 'axios';
+import UpdateExpenses from './components/UpdateExpenses';
 
 class App extends Component {
   state = {
@@ -14,7 +15,9 @@ class App extends Component {
     total: 0
   };
 
-  apiEndpoint = "https://qlv8kacvn9.execute-api.eu-west-2.amazonaws.com/dev/expenses";
+  updateMode =false;
+
+  apiEndpoint = "https://2xelevltn5.execute-api.eu-west-2.amazonaws.com/dev/expenses/";
 
   componentDidMount = () => {    
     axios.get(this.apiEndpoint)
@@ -59,14 +62,38 @@ class App extends Component {
     })
   }
 
+  onUpdateClicked=(expenses_id)=>{
+    this.updateMode=true;
+    let updateTask;
+    let currentSelectTask = this.state.listofItems;
+    currentSelectTask.forEach(item => {
+      if (item.expenses_id === expenses_id) {
+        updateTask=item;
+      }
+    });
+    axios.put(this.apiEndpoint  + expenses_id ,updateTask)
 
-
-  onDeleteClicked = (rowNum) => {
-    let currentDeleteTask = this.state.listofItems;
-    currentDeleteTask.splice(rowNum, 1);
-    this.setState({ listofItems: currentDeleteTask });
-    this.totalExpAmt();
+      .then(result => {
+        this.componentDidMount();
+      })
+      .catch(err => {
+        console.log("inside err");
+      })
+    
   }
+
+  onDeleteClicked = (expenses_id) => {
+
+    axios.delete(this.apiEndpoint  + expenses_id)
+      .then(result => {
+        this.componentDidMount();
+      })
+      .catch(err => {
+      })
+          this.totalExpAmt();
+          alert(expenses_id);
+  }
+
 
   totalExpAmt = () => {
     let data = this.state.listofItems;   
@@ -94,16 +121,16 @@ class App extends Component {
           <SearchExpenses />
         </div>
         <div><br></br></div>
-        <div className="row expensesList">
-          <div className="col">Expenses</div>
-          <div className="col">Exp Date</div>
-          <div className="col">Category</div>
-          <div className="col">Status</div>
-          <div className="col">Payment</div>
-          <div className="col">Notes</div>
-          <div className="col">Amount</div>
-          <div className="coll">Update</div>
-          <div className="coll">Delete</div>
+        <div className="row expensesList"  >
+          <div className="col bold">Expenses </div>
+          <div className="col bold">Exp Date </div>
+          <div className="col bold">Category </div>
+          <div className="col bold">Status </div>
+          <div className="col bold">Payment </div>
+          <div className="col bold">Notes </div>
+          <div className="col bold">Amount </div>
+          <div className="coll bold"></div>
+          <div className="coll "></div>
           <div className="container ">
             {
               this.state.listofItems.map((item, index) => {
@@ -115,14 +142,17 @@ class App extends Component {
                   payment_type={item.payment_type}
                   notes={item.notes}
                   amount={item.amount}
-                  delete={this.onDeleteClicked}
+                  delete={this.onDeleteClicked }
+                  update={this.onUpdateClicked}
                   key={index}
                   rowNum={index}
                   user_id = {item.user_id}
+                  expenses_id={item.expenses_id}
                 />
               })
             }
           </div>
+
         </div>
         <div className="row total">
           <ExpensesTotal totalAmount={this.state.total}
@@ -134,3 +164,4 @@ class App extends Component {
 }
 
 export default App;
+
