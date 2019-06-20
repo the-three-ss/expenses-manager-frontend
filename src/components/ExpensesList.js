@@ -11,10 +11,10 @@ class ExpensesList extends Component {
         })
         return (
             <div>
-                <div className="row expensesList ">
-
-                    <div className="col">
+                <div className="row expensesList">
+                    <div className="col">                       
                         {this.props.expenses_name}
+                    
                     </div>
                     <div className="col">
                         {localDateString}
@@ -34,21 +34,12 @@ class ExpensesList extends Component {
                     <div className="col">
                         {this.props.amount}
                     </div>
-                    
-                    <div className="col">
-                   
-                </div>
-                
-                <button type="button" class="btn btn-outline-success"
-                     onClick={this.props.update.bind(this, this.props.expenses_id)}   >Update
-                </button> 
-                    <button type="button" class="btn btn-outline-success"
-                     onClick={this.props.delete.bind(this, this.props.expenses_id)}   >Delete
-                </button>
-
-                    
-                
-                    
+                    <div className="coll">
+                        <i class="material-icons" onClick={this.props.update.bind(this, this.props.expenses_id)}>update</i>
+                    </div>
+                    <div className="coll">
+                        <i class="material-icons" onClick={this.props.delete.bind(this, this.props.expenses_id)}>delete</i>
+                    </div>
                 </div>
             </div>
 
