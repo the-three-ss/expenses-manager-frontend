@@ -6,20 +6,22 @@ import AddExpenses from './components/AddExpenses';
 import SearchExpenses from './components/SearchExpenses';
 import ExpensesList from './components/ExpensesList';
 import ExpensesTotal from './components/ExpensesTotal';
-import axios from 'axios';
 import UpdateExpenses from './components/UpdateExpenses';
+import axios from 'axios';
 
 class App extends Component {
   state = {
     listofItems: [],
-    total: 0
+    total: 0,
+
+    setEditing: false,
+    selectedExpense: ''
+
   };
 
-  updateMode =false;
+  apiEndpoint = "https://qlv8kacvn9.execute-api.eu-west-2.amazonaws.com/dev/expenses";
 
-  apiEndpoint = "https://2xelevltn5.execute-api.eu-west-2.amazonaws.com/dev/expenses/";
-
-  componentDidMount = () => {    
+  componentDidMount = () => {
     axios.get(this.apiEndpoint)
       .then(result => {
         this.setState({
@@ -33,9 +35,9 @@ class App extends Component {
 
 
   addExpenses = (newText, newCategory, newDate, newAmount, newPaymentType, newNotes, newStatus) => {
-
+    this.setState({ setEditing: false });
     const currentListofExpenses = this.state.listofItems;
-    
+
     const newExpenses = {
       expenses_name: newText,
       category_name: newCategory,
@@ -44,59 +46,38 @@ class App extends Component {
       status: newStatus,
       payment_type: newPaymentType,
       notes: newNotes,
-      user_id: 1     
+      user_id: 1
     };
 
     axios.post(this.apiEndpoint, newExpenses)
-    .then(result => {
-      const expensesId = result.data.expenses_id;
-     
-      newExpenses.expenses_id = expensesId;
-      currentListofExpenses.push(newExpenses);
-      this.setState({
-        listofItems: currentListofExpenses
-      })
-      this.totalExpAmt();
-    })
-    .catch(err => {
-    })
-  }
-
-  onUpdateClicked=(expenses_id)=>{
-    this.updateMode=true;
-    let updateTask;
-    let currentSelectTask = this.state.listofItems;
-    currentSelectTask.forEach(item => {
-      if (item.expenses_id === expenses_id) {
-        updateTask=item;
-      }
-    });
-    axios.put(this.apiEndpoint  + expenses_id ,updateTask)
-
       .then(result => {
-        this.componentDidMount();
+        const expensesId = result.data.expenses_id;
+
+        newExpenses.expenses_id = expensesId;
+        currentListofExpenses.push(newExpenses);
+        this.setState({
+          listofItems: currentListofExpenses
+        })
+        this.totalExpAmt();
       })
       .catch(err => {
-        console.log("inside err");
       })
-    
   }
+
+
 
   onDeleteClicked = (expenses_id) => {
-
-    axios.delete(this.apiEndpoint  + expenses_id)
+    this.setState({ setEditing: false });
+    axios.delete(this.apiEndpoint + '/' + expenses_id)
       .then(result => {
         this.componentDidMount();
       })
       .catch(err => {
       })
-          this.totalExpAmt();
-          alert(expenses_id);
   }
 
-
   totalExpAmt = () => {
-    let data = this.state.listofItems;   
+    let data = this.state.listofItems;
     if (data) {
       let result = 0;
       data.forEach(element => {
@@ -105,7 +86,41 @@ class App extends Component {
       this.setState({ total: result });
     }
   }
-  
+
+  onUpdateClicked = (expenses_id) => {
+    this.setState({ setEditing: true });
+
+    this.state.listofItems.forEach(item => {
+      if (item.expenses_id === expenses_id) {
+        this.setState({ selectedExpense: item })        
+      }
+    })
+
+   
+  }
+
+  updateExpenses = (updateExpName, updateCategory, updateExpDate, updatAmount, updatePaymentType, updateNotes, updateStatus, expensesId) => {
+
+    const updatedExpenses = {
+      expenses_name: updateExpName,
+      category_name: updateCategory,
+      exp_date: updateExpDate,
+      amount: updatAmount,
+      status: updateStatus,
+      payment_type: updatePaymentType,
+      notes: updateNotes,
+      user_id: 1,
+    }
+    axios.put(this.apiEndpoint + '/' + [expensesId], updatedExpenses)
+      .then(result => {
+        this.componentDidMount();
+      })
+      .catch(err => {
+        console.log("inside err");
+      })
+    this.setState({ setEditing: false });
+  }
+
   render() {
     return (
       <div className="container">
@@ -114,24 +129,30 @@ class App extends Component {
         </div>
         <div><br></br></div>
         <div className="row">
-          <AddExpenses addExpenses={this.addExpenses.bind(this)} />
+          {
+            this.state.setEditing ? (
+              <UpdateExpenses parentState={this.state.selectedExpense} updateExpenses={this.updateExpenses.bind(this)} />
+            ) : (
+                <AddExpenses addExpenses={this.addExpenses.bind(this)} />
+              )
+          }
         </div>
         <div><br></br></div>
         <div className="row">
           <SearchExpenses />
         </div>
         <div><br></br></div>
-        <div className="row expensesList"  >
-          <div className="col bold">Expenses </div>
-          <div className="col bold">Exp Date </div>
-          <div className="col bold">Category </div>
-          <div className="col bold">Status </div>
-          <div className="col bold">Payment </div>
-          <div className="col bold">Notes </div>
-          <div className="col bold">Amount </div>
-          <div className="coll bold"></div>
-          <div className="coll "></div>
-          <div className="container ">
+        <div className="row expensesList">
+          <div className="col">Expenses</div>
+          <div className="col">Exp Date</div>
+          <div className="col">Category</div>
+          <div className="col">Status</div>
+          <div className="col">Payment</div>
+          <div className="col">Notes</div>
+          <div className="col">Amount</div>
+          <div className="coll"></div>
+          <div className="coll"></div>
+          <div className="container">
             {
               this.state.listofItems.map((item, index) => {
                 return <ExpensesList
@@ -142,17 +163,16 @@ class App extends Component {
                   payment_type={item.payment_type}
                   notes={item.notes}
                   amount={item.amount}
-                  delete={this.onDeleteClicked }
-                  update={this.onUpdateClicked}
+                  delete={this.onDeleteClicked}
                   key={index}
                   rowNum={index}
-                  user_id = {item.user_id}
+                  user_id={item.user_id}
                   expenses_id={item.expenses_id}
+                  update={this.onUpdateClicked}
                 />
               })
             }
           </div>
-
         </div>
         <div className="row total">
           <ExpensesTotal totalAmount={this.state.total}
@@ -164,4 +184,3 @@ class App extends Component {
 }
 
 export default App;
-
