@@ -19,7 +19,7 @@ class App extends Component {
 
   };
 
-  apiEndpoint = "https://qlv8kacvn9.execute-api.eu-west-2.amazonaws.com/dev/expenses";
+  apiEndpoint = "https://bsl6r2vqp7.execute-api.eu-west-2.amazonaws.com/dev/expenses";
 
   componentDidMount = () => {
     axios.get(this.apiEndpoint)
@@ -143,15 +143,15 @@ class App extends Component {
         </div>
         <div><br></br></div>
         <div className="row expensesList">
-          <div className="col">Expenses</div>
-          <div className="col">Exp Date</div>
-          <div className="col">Category</div>
-          <div className="col">Status</div>
-          <div className="col">Payment</div>
-          <div className="col">Notes</div>
-          <div className="col">Amount</div>
-          <div className="coll"></div>
-          <div className="coll"></div>
+          <div className="col bold">Expenses</div>
+          <div className="col bold">Exp Date</div>
+          <div className="col bold">Category</div>
+          <div className="col bold">Status</div>
+          <div className="col bold">Payment</div>
+          <div className="col bold">Notes</div>
+          <div className="col bold">Amount</div>
+          <div className="coll bold"></div>
+          <div className="coll bold"></div>
           <div className="container">
             {
               this.state.listofItems.map((item, index) => {
