@@ -11,7 +11,7 @@ class ExpensesList extends Component {
         })
         return (
             <div>
-                <div className="row expensesList">
+                <div className="row expensesList listhover">
                     <div className="col">                       
                         {this.props.expenses_name}
                     
@@ -35,10 +35,12 @@ class ExpensesList extends Component {
                         {this.props.amount}
                     </div>
                     <div className="coll">
-                        <i class="material-icons" onClick={this.props.update.bind(this, this.props.expenses_id)}>update</i>
+                        <i class="material-icons" onClick={this.props.update.bind(this, this.props.expenses_id)}>
+                        <img src="https://img.icons8.com/material-two-tone/24/000000/update-file.png"></img></i>
                     </div>
                     <div className="coll">
-                        <i class="material-icons" onClick={this.props.delete.bind(this, this.props.expenses_id)}>delete</i>
+                        <i class="material-icons" onClick={this.props.delete.bind(this, this.props.expenses_id)}>
+                        <img src="https://img.icons8.com/material-two-tone/24/000000/delete-forever.png"></img></i>
                     </div>
                 </div>
             </div>

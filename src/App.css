@@ -33,7 +33,7 @@
 }
 
 .title {
-  background-color: olive;
+  background-color: rgb(76, 161, 161);
   font-size: 40px;
   color: black;
   border-style: solid;
@@ -45,47 +45,50 @@
   padding:7px 30px 2px 60px;  
   border-collapse: separate;
   border-spacing: 1px;
-  border: 1px solid olive;
+  border: 1px solid rgb(76, 161, 161);
   align-content:center; 
 }
 
 .input-group-text{
-  color:olive;
+  color:rgb(76, 161, 161);
 }
 
 .basic-addon1{
-  color: olive;
+  color: rgb(76, 161, 161);
  }
 
 .form-control:focus {
-  border: 2px solid olive;
+  border: 2px solid rgb(76, 161, 161);
   height: 10%;
 }
 .btn:focus{
-  color:olive;
+  color:rgb(76, 161, 161);
 }
 
 .btn {
-  color:olive;
+  color:rgb(76, 161, 161);
 }
 
 .searchExpeneses{
   border-width: 1px;   
   padding:7px 60px 2px 60px;
-  color: olive;
-  border-style: solid; 
+  color: rgb(76, 161, 161);
+  border-style: solid;  
 }
 
 .expensesList{
   border-style: solid; 
   border-width: 1px;  
-  color: olive;
+  color: black;
   border-collapse: separate;
   border-spacing: 3px; 
   }
   
 .bold{
   font-weight :bold;
+  color: black;
+  background-color: rgb(76, 161, 161);
+
 }
 
 .col {
@@ -98,10 +101,26 @@
 }
 
 .total{ 
-  border: 2px solid olive;
+  border: 2px solid rgb(76, 161, 161);
   margin-left: 67%;
+}
+.total:hover{ 
+  background-color: rgb(76, 161, 161);
 }
 
 .divheight {
   height: 35%;
 }
+.listhover{
+  background-color: rgb(226, 219, 219);
+}
+
+.listhover:hover{
+  background-color: rgb(152, 209, 209);
+}
+
+.input-group-text{
+  background-color: lightgray;  
+}
+
+

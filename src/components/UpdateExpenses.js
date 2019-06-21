@@ -78,9 +78,10 @@ class UpdateExpenses extends Component {
         this.setState({ notes: parentState.notes });
         this.setState({ status: parentState.status });
         this.setState({ category: parentState.category_name });
+       
     }
 
-    render() {
+    render() {       
         return (
 
             <div className="addExpeneses">
