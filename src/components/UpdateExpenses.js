@@ -119,7 +119,7 @@ class UpdateExpenses extends Component {
                 <div className="row divheight">
                     <div class="col-md-4 col-xs-6">
                         <div >
-                            <span class="input-group-text" id="basic-addon1">Expeneses Date
+                            <span class="input-group-text" id="basic-addon1">Expenses Date
                             <input id="expDate" class="form-control" type="date" onChange={this.onDateChange} defaultValue={this.state.expenseDate} /></span>
                         </div>
                     </div>
