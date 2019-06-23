@@ -86,7 +86,7 @@ class UpdateExpenses extends Component {
 
             <div className="addExpenses">
                 <div className="row divheight">
-                    <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="col-md-4 col-sm-6 col-xs-6">
                         <div >
                             <span class="input-group-text" id="basic-addon1">Expenses Name
                             <input type="text" class="form-control" id="expenseName" onChange={this.onTextChanged} value={this.state.expenseName} /></span>
@@ -155,7 +155,7 @@ class UpdateExpenses extends Component {
 
 
                     <div class="col-md-1 col-sm-6">
-                        <button type="button" class="btn btn-lg" onClick={this.onUpdateClicked} >Update</button>
+                        <button type="button" class="btn btn-lg" onClick={this.onUpdateClicked}>Update</button>
                     </div>
 
 
