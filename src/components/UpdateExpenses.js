@@ -4,8 +4,7 @@ class UpdateExpenses extends Component {
 
     state = {
         expenseName: this.props.parentState.expenses_name,
-        expenseDate: new Date(this.props.parentState.exp_date)
-            .toISOString().substr(0, 10),
+        expenseDate: this.props.parentState.exp_date,
         expenseAmount: this.props.parentState.amount,
         paymentType: this.props.parentState.payment_type,
         notes: this.props.parentState.notes,
@@ -68,11 +67,7 @@ class UpdateExpenses extends Component {
 
     componentWillReceiveProps({ parentState }) {
         this.setState({ expenseName: parentState.expenses_name });
-        this.setState({
-            expenseDate: new Date(parentState.exp_date)
-                .toISOString().substr(0, 10)
-
-        });
+        this.setState({ expenseDate: parentState.exp_date });
         this.setState({ expenseAmount: parentState.amount });
         this.setState({ paymentType: parentState.payment_type });
         this.setState({ notes: parentState.notes });
@@ -120,7 +115,8 @@ class UpdateExpenses extends Component {
                     <div class="col-md-4 col-sm-6">
                         <div >
                             <span class="input-group-text" id="basic-addon1">Date
-                            <input id="expDate" class="form-control" type="date" onChange={this.onDateChange} defaultValue={this.state.expenseDate} /></span>
+                            <input id="expDate" class="form-control" type="date" onChange={this.onDateChange}
+                                     value={new Date(this.state.expenseDate).toISOString().substr(0, 10)} /></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-6">
