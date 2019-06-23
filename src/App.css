@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* background-color: rgb(92, 196, 196); */
 }
 
 .App-logo {
@@ -33,20 +34,25 @@
 }
 
 .title {
-  background-color: rgb(76, 161, 161);
+  background-color: rgb(92, 196, 196);
   font-size: 40px;
-  color: black;
+  color: white;
   border-style: solid;
   border-width: 1px;
   text-align: center; 
+  border-radius: 15px;
 }
 
-.addExpeneses{
-  padding:7px 30px 2px 60px;  
+.addExpenses{
+  align-self: center;
+  flex-direction: column;
+  background-color: white;
+  padding:7px 10px 7px 10px;  
   border-collapse: separate;
   border-spacing: 1px;
-  border: 1px solid rgb(76, 161, 161);
+  border: 2px solid rgb(57, 124, 124);
   align-content:center; 
+  border-radius: 5px;
 }
 
 .input-group-text{
@@ -69,25 +75,32 @@
   color:rgb(76, 161, 161);
 }
 
-.searchExpeneses{
-  border-width: 1px;   
-  padding:7px 60px 2px 60px;
-  color: rgb(76, 161, 161);
-  border-style: solid;  
+.searchExpenses{
+  align-self: center;
+  flex-direction: column;
+  background-color: white;
+  padding:7px 10px 7px 10px;
+  border-collapse: separate;
+  border-spacing: 1px;
+  padding:7px 10px 7px 10px;
+  border: 2px solid rgb(57, 124, 124);
+  align-content:center;
+  border-radius: 5px; 
+  border-collapse: separate; 
 }
 
 .expensesList{
   border-style: solid; 
   border-width: 1px;  
-  color: black;
+  color:rgb(45, 170, 170);;
   border-collapse: separate;
   border-spacing: 3px; 
   }
   
 .bold{
   font-weight :bold;
-  color: black;
-  background-color: rgb(76, 161, 161);
+  color: white;
+  background-color: rgb(92, 196, 196);
 
 }
 
@@ -122,5 +135,11 @@
 .input-group-text{
   background-color: lightgray;  
 }
+
+.updateExpenses{
+  background-color: coral;
+}
+
+  
 
 
