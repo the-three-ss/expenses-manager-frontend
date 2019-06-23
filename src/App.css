@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: rgb(92, 196, 196);
+  /* background-color: rgb(92, 196, 196); */
 }
 
 .App-logo {
@@ -44,11 +44,13 @@
 }
 
 .addExpenses{
-  background-color: rgb(92, 196, 196);
+  align-self: center;
+  flex-direction: column;
+  background-color: rgb(92, 196, 174);
   padding:7px 10px 7px 10px;  
   border-collapse: separate;
   border-spacing: 1px;
-  border: 1px solid rgb(92, 196, 196);
+  border: 2px solid rgb(57, 124, 124);
   align-content:center; 
   border-radius: 5px;
 }
@@ -74,21 +76,24 @@
 }
 
 .searchExpenses{
-  background-color: rgb(92, 196, 196);
-  border-width: 1px;   
+  align-self: center;
+  flex-direction: column;
+  background-color: rgb(155, 209, 130);
   padding:7px 10px 7px 10px;
-  color: rgb(76, 161, 161);
-  border-style: solid;
+  border-collapse: separate;
+  border-spacing: 1px;
+  padding:7px 10px 7px 10px;
+  border: 2px solid rgb(57, 124, 124);
+  align-content:center;
   border-radius: 5px;  
 }
 
 .expensesList{
   border-style: solid; 
   border-width: 1px;  
-  color:rgb(68, 148, 148);;
+  color:rgb(45, 170, 170);;
   border-collapse: separate;
   border-spacing: 3px; 
-  border-radius: 5px;
   }
   
 .bold{
@@ -134,7 +139,6 @@
   background-color: coral;
 }
 
-/* .button{ */
   
 
 

@@ -5,7 +5,7 @@ class SearchExpenses extends Component {
         return (
             <div class="container">
                 <div className="searchExpenses">
-                    <div className="row ">
+                    <div className="row divheight">
 
                         <div class="col-md-6">
                             <span class="input-group-text" id="basic-addon1">From
@@ -18,7 +18,7 @@ class SearchExpenses extends Component {
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row divheight">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <span class="input-group-text" id="basic-addon1" for="ExpensesStatus">Status
