@@ -24,7 +24,7 @@ class UpdateExpenses extends Component {
         const updateStatus = this.state.status;
 
         if (updateExpName === "" || updateCategory === "" || updateExpDate === "" || updatAmount === "" ||
-        updatePaymentType === "" || updateStatus === "") {
+            updatePaymentType === "" || updateStatus === "") {
             alert("Please enter the all the fileds");
         } else {
             this.props.updateExpenses(updateExpName, updateCategory, updateExpDate, updatAmount, updatePaymentType, updateNotes, updateStatus, this.props.parentState.expenses_id);
@@ -71,22 +71,22 @@ class UpdateExpenses extends Component {
         this.setState({
             expenseDate: new Date(parentState.exp_date)
                 .toISOString().substr(0, 10)
-                
+
         });
         this.setState({ expenseAmount: parentState.amount });
         this.setState({ paymentType: parentState.payment_type });
         this.setState({ notes: parentState.notes });
         this.setState({ status: parentState.status });
         this.setState({ category: parentState.category_name });
-       
+
     }
 
-    render() {       
+    render() {
         return (
 
-            <div className="addExpeneses">
+            <div className="addExpenses">
                 <div className="row divheight">
-                    <div class="col-md-4 col-sm-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <div >
                             <span class="input-group-text" id="basic-addon1">Expenses Name
                             <input type="text" class="form-control" id="expenseName" onChange={this.onTextChanged} value={this.state.expenseName} /></span>
@@ -117,9 +117,9 @@ class UpdateExpenses extends Component {
                 </div>
 
                 <div className="row divheight">
-                    <div class="col-md-4 col-xs-6">
+                    <div class="col-md-4 col-sm-6">
                         <div >
-                            <span class="input-group-text" id="basic-addon1">Expenses Date
+                            <span class="input-group-text" id="basic-addon1">Date
                             <input id="expDate" class="form-control" type="date" onChange={this.onDateChange} defaultValue={this.state.expenseDate} /></span>
                         </div>
                     </div>
@@ -148,7 +148,7 @@ class UpdateExpenses extends Component {
                     </div>
                 </div>
                 <div className="row divheight">
-                    <div class="col-md-7 col-sm-6">
+                    <div class="col-md-7 col-sm-6 col-xs-6">
                         <span class="input-group-text" id="basic-addon1" for="ExpNotes">Notes
                         <textarea class="form-control" id="ExpNotes" rows="1" onChange={this.onNotesChanged} value={this.state.notes}></textarea></span>
                     </div>

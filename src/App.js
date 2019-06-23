@@ -92,11 +92,11 @@ class App extends Component {
 
     this.state.listofItems.forEach(item => {
       if (item.expenses_id === expenses_id) {
-        this.setState({ selectedExpense: item })        
+        this.setState({ selectedExpense: item })
       }
     })
 
-   
+
   }
 
   updateExpenses = (updateExpName, updateCategory, updateExpDate, updatAmount, updatePaymentType, updateNotes, updateStatus, expensesId) => {
@@ -151,7 +151,7 @@ class App extends Component {
           <div className="col bold">Notes</div>
           <div className="col bold">Amount</div>
           <div className="coll bold">Update</div>
-          <div className="coll bold">Delete</div>         
+          <div className="coll bold">Delete</div>
           <div className="container ">
             {
               this.state.listofItems.map((item, index) => {
