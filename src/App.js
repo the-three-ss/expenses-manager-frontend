@@ -132,16 +132,16 @@ class App extends Component {
             searchExpenses={this.searchExpenses.bind(this)} />
         </div>
         <div><br></br></div>
-        <div className="row expensesList"  >
-          <div className="col bold">Expenses </div>
-          <div className="col bold">Exp Date </div>
-          <div className="col bold">Category </div>
-          <div className="col bold">Status </div>
-          <div className="col bold">Payment </div>
-          <div className="col bold">Notes </div>
-          <div className="col bold">Amount </div>
-          <div className="coll bold"></div>
-          <div className="coll "></div>
+        <div className="row expensesList ">
+          <div className="col bold">Expenses</div>
+          <div className="col bold">Exp Date</div>
+          <div className="col bold">Category</div>
+          <div className="col bold">Status</div>
+          <div className="col bold">Payment</div>
+          <div className="col bold">Notes</div>
+          <div className="col bold">Amount</div>
+          <div className="coll bold">Update</div>
+          <div className="coll bold">Delete</div>
           <div className="container ">
             {
               this.state.listofItems.map((item, index) => {
