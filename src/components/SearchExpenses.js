@@ -16,7 +16,9 @@ class SearchExpenses extends Component {
                             <span class="input-group-text" id="basic-addon1">To
                         <input id="dateInput" class="form-control" type="date" /></span>
                         </div>
+                    </div>
 
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <span class="input-group-text" id="basic-addon1" for="ExpensesStatus">Status

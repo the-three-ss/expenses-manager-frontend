@@ -135,7 +135,6 @@ class UpdateExpenses extends Component {
                         </div>
                     </div>
 
-
                     <div class="col-md-4 col-xs-6">
                         <div class="form-group">
                             <span class="input-group-text" id="basic-addon1" for="ExpensesStatus">Status
@@ -157,7 +156,6 @@ class UpdateExpenses extends Component {
                     <div class="col-md-1 col-sm-6">
                         <button type="button" class="btn btn-lg" onClick={this.onUpdateClicked}>Update</button>
                     </div>
-
 
                 </div>
             </div>
