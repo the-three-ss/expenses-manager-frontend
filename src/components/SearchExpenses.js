@@ -17,7 +17,9 @@ class SearchExpenses extends Component {
                         <input id="dateInput" class="form-control" type="date" /></span>
                         </div>
                     </div>
-
+<div>
+    
+</div>
                     <div class="row divheight">
                         <div class="col-md-6">
                             <div class="form-group">

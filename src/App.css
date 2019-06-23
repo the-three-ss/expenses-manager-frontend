@@ -46,7 +46,7 @@
 .addExpenses{
   align-self: center;
   flex-direction: column;
-  background-color: rgb(92, 196, 174);
+  background-color: white;
   padding:7px 10px 7px 10px;  
   border-collapse: separate;
   border-spacing: 1px;
@@ -78,14 +78,15 @@
 .searchExpenses{
   align-self: center;
   flex-direction: column;
-  background-color: rgb(155, 209, 130);
+  background-color: white;
   padding:7px 10px 7px 10px;
   border-collapse: separate;
   border-spacing: 1px;
   padding:7px 10px 7px 10px;
   border: 2px solid rgb(57, 124, 124);
   align-content:center;
-  border-radius: 5px;  
+  border-radius: 5px; 
+  border-collapse: separate; 
 }
 
 .expensesList{
