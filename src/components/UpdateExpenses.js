@@ -123,9 +123,10 @@ class UpdateExpenses extends Component {
                                         value={new Date(this.state.expenseDate).toISOString().substr(0, 10)} /></span>
                             </div>
                         </div>
-                        <div class="col-md-4 col-xs-6">
-                            <div class="form-group">
-                                <span class="input-group-text" id="basic-addon1" for="PaymentType">Payment Type
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <span class="input-group-text" id="basic-addon1" for="PaymentType">Payment Type
                             <select class="form-control" id="PaymentType" onChange={this.onPaymentChanged} value={this.state.paymentType}>
                                         <option>Select</option>
                                         <option>Card</option>
@@ -159,7 +160,6 @@ class UpdateExpenses extends Component {
 
                     </div>
                 </div>
-            </div>
         );
     }
 }
