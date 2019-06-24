@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import AddExpenses from './components/AddExpenses';
 import SearchExpenses from './components/SearchExpenses';
 import ExpensesList from './components/ExpensesList';
 import ExpensesTotal from './components/ExpensesTotal';
-import axios from 'axios';
 import UpdateExpenses from './components/UpdateExpenses';
+import axios from 'axios';
 
 class App extends Component {
   state = {
@@ -18,9 +19,7 @@ class App extends Component {
     images: ["/images/background.jpg","/images/logo.jpg"]
   };
 
-  updateMode = false;
-
-  apiEndpoint = "https://2xelevltn5.execute-api.eu-west-2.amazonaws.com/dev/expenses/";
+  apiEndpoint = "https://qlv8kacvn9.execute-api.eu-west-2.amazonaws.com/dev/expenses";
 
   componentDidMount = () => {
     axios.get(this.apiEndpoint)
@@ -36,7 +35,7 @@ class App extends Component {
 
 
   addExpenses = (newText, newCategory, newDate, newAmount, newPaymentType, newNotes, newStatus) => {
-
+    this.setState({ setEditing: false });
     const currentListofExpenses = this.state.listofItems;
 
     const newExpenses = {
@@ -65,49 +64,17 @@ class App extends Component {
       })
   }
 
-  searchExpenses = (newToDate, newFromDate) => {
 
-    const currentListofExpenses = this.state.listofItems;
-    let filterDate = currentListofExpenses.filter((item) => {
-      return item.exp_date.getTime() >= newFromDate.getTime() &&
-        item.date.getTime() <= newToDate.getTime();
-
-    });
-    this.setState({ listofItems: filterDate });
-  }
-
-  onUpdateClicked = (expenses_id) => {
-    this.updateMode = true;
-    let updateTask;
-    let currentSelectTask = this.state.listofItems;
-    currentSelectTask.forEach(item => {
-      if (item.expenses_id === expenses_id) {
-        updateTask = item;
-      }
-    });
-    axios.put(this.apiEndpoint + expenses_id, updateTask)
-
-      .then(result => {
-        this.componentDidMount();
-      })
-      .catch(err => {
-        console.log("inside err");
-      })
-
-  }
 
   onDeleteClicked = (expenses_id) => {
-
-    axios.delete(this.apiEndpoint + expenses_id)
+    this.setState({ setEditing: false });
+    axios.delete(this.apiEndpoint + '/' + expenses_id)
       .then(result => {
         this.componentDidMount();
       })
       .catch(err => {
       })
-    this.totalExpAmt();
-    alert(expenses_id);
   }
-
 
   totalExpAmt = () => {
     let data = this.state.listofItems;
@@ -118,6 +85,40 @@ class App extends Component {
       });
       this.setState({ total: result });
     }
+  }
+
+  onUpdateClicked = (expenses_id) => {
+    this.setState({ setEditing: true });
+
+    this.state.listofItems.forEach(item => {
+      if (item.expenses_id === expenses_id) {
+        this.setState({ selectedExpense: item })
+      }
+    })
+
+
+  }
+
+  updateExpenses = (updateExpName, updateCategory, updateExpDate, updatAmount, updatePaymentType, updateNotes, updateStatus, expensesId) => {
+
+    const updatedExpenses = {
+      expenses_name: updateExpName,
+      category_name: updateCategory,
+      exp_date: updateExpDate,
+      amount: updatAmount,
+      status: updateStatus,
+      payment_type: updatePaymentType,
+      notes: updateNotes,
+      user_id: 1,
+    }
+    axios.put(this.apiEndpoint + '/' + [expensesId], updatedExpenses)
+      .then(result => {
+        this.componentDidMount();
+      })
+      .catch(err => {
+        console.log("inside err");
+      })
+    this.setState({ setEditing: false });
   }
 
   render() {
@@ -185,4 +186,3 @@ class App extends Component {
 }
 
 export default App;
-
