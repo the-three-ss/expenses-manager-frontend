@@ -7,37 +7,33 @@ class SearchExpenses extends Component {
                 <div className="searchExpenses">
                     <div className="row divheight">
 
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-sm-12">
                             <span class="input-group-text" id="basic-addon1">From
-                        <input id="dateInput" class="form-control" type="date" /></span>
+                                 <input id="dateInput" class="form-control" type="date" /></span>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-sm-12">
                             <span class="input-group-text" id="basic-addon1">To
-                        <input id="dateInput" class="form-control" type="date" /></span>
+                                 <input id="dateInput" class="form-control" type="date" /></span>
                         </div>
-                    </div>
-<div>
-    
-</div>
-                    <div class="row divheight">
-                        <div class="col-md-6">
+
+                        <div class="col-md-3 col-sm-12">
                             <div class="form-group">
                                 <span class="input-group-text" id="basic-addon1" for="ExpensesStatus">Status
-                            <select class="form-control" id="ExpensesStatus">
+                                    <select class="form-control" id="ExpensesStatus">
                                         <option >Paid</option>
                                         <option >UnPaid</option>
                                     </select></span>
                             </div>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-12">
                             <button type="button" class="btn btn-lg">Search</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         );
     }
 }
