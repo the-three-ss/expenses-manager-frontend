@@ -35,23 +35,20 @@ class SearchExpenses extends Component {
                 <div className="searchExpenses">
                     <div className="row divheight">
 
-                        <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="col-md-3 col-sm-12">
                             <span class="input-group-text" id="basic-addon1">From
-                        <input id="dateInput" class="form-control" type="date"
-                                    onChange={this.onFromDateChange} value={this.state.date} /></span>
+                                 <input id="dateInput" class="form-control" type="date" /></span>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="col-md-3 col-sm-12">
                             <span class="input-group-text" id="basic-addon1">To
-                        <input id="dateInput" class="form-control" type="date"
-                                    onChange={this.onToDateChange} value={this.state.date} /></span>
+                                 <input id="dateInput" class="form-control" type="date" /></span>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <span class="input-group-text" id="basic-addon1" for="ExpensesStatus"
-                                    onChange={this.onStatusChanged} value={this.state.status}>Status
-                            <select class="form-control" id="ExpensesStatus">
+                                <span class="input-group-text" id="basic-addon1" for="ExpensesStatus">Status
+                                    <select class="form-control" id="ExpensesStatus">
                                         <option >Paid</option>
                                         <option >UnPaid</option>
 
@@ -59,11 +56,12 @@ class SearchExpenses extends Component {
                             </div>
                         </div>
 
-                        <div class="col-md-1 col-sm-6">
-                            <button type="button" class="btn btn-lg" onClick={this.onSearchClicked} >Search</button>
+                        <div class="col-md-2 col-sm-12">
+                            <button type="button" class="btn btn-lg">Search</button>
                         </div>
                     </div>
                 </div>
+
             </div>
         );
     }
