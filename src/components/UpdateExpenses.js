@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class UpdateExpenses extends Component {
 
     state = {
@@ -11,6 +12,7 @@ class UpdateExpenses extends Component {
         status: this.props.parentState.status,
         category: this.props.parentState.category_name
     }
+
 
     onUpdateClicked = (event) => {
 
@@ -37,6 +39,7 @@ class UpdateExpenses extends Component {
         }
     }
 
+
     onTextChanged = (event) => {
         this.setState({ expenseName: event.target.value });
     }
@@ -48,6 +51,7 @@ class UpdateExpenses extends Component {
     onNotesChanged = (event) => {
         this.setState({ notes: event.target.value });
     }
+    
 
     onPaymentChanged = (event) => {
         this.setState({ paymentType: event.target.value });
