@@ -16,7 +16,7 @@ class App extends Component {
 
     setEditing: false,
     selectedExpense: '',
-    images: ["/images/background.jpg","/images/logo.jpg"]
+    images: ["/images/OPWC-3.jpg","/images/logo.jpg"]
   };
 
   apiEndpoint = "https://qlv8kacvn9.execute-api.eu-west-2.amazonaws.com/dev/expenses";
