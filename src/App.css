@@ -54,7 +54,17 @@
   align-content:center; 
   border-radius: 5px;
 }
-
+.searchExpenses{
+  align-self: center;
+  flex-direction: column;
+  background-color: white;
+  padding:7px 10px 7px 10px;  
+  border-collapse: separate;
+  border-spacing: 1px;
+  border: 2px solid rgb(57, 124, 124);
+  align-content:center; 
+  border-radius: 5px;
+}
 .input-group-text{
   color:rgb(76, 161, 161);
 }
@@ -74,6 +84,7 @@
 
 .btn {
   color:rgb(76, 161, 161);
+  background-color:rgb(196, 194, 194);
 }
 
 .searchExpenses{
@@ -115,7 +126,7 @@
 }
 
 .total{ 
-  border: 2px solid rgb(76, 161, 161);
+  border: 4px solid rgb(76, 161, 161);
   margin-left: 67%;
 }
 .total:hover{ 
@@ -137,8 +148,13 @@
   background-color: lightgray;  
 }
 
-.updateExpenses{
-  background-color: coral;
+/* .updateExpenses{
+  background-color: coral; */
+.button btn btn-lg {
+  background-color: gray;
+  border-radius: 5px; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 2px solid #4CAF50; /* Green */
 }
 
   

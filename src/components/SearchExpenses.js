@@ -1,9 +1,37 @@
 import React, { Component } from 'react';
 
+
+
+
 class SearchExpenses extends Component {
+    state = {
+        todate: "",
+        fromdate: ""
+    }
+    onSearchClicked = (event) => {
+
+        const newToDate = this.state.todate;
+        const newFromDate = this.state.fromdate;
+        this.props.searchExpenses(newToDate, newFromDate);
+
+    }
+    onFromDateChange = (event) => {
+
+        this.setState({ fromdate: event.target.value });
+
+    }
+    onToDateChange = (event) => {
+
+        this.setState({ todate: event.target.value });
+
+    }
+    onStatusChanged = (event) => {
+        this.setState({ status: event.target.value });
+    }
+
     render() {
         return (
-            <div class="container">
+            <div className="container" >
                 <div className="searchExpenses">
                     <div className="row divheight">
 
@@ -23,6 +51,7 @@ class SearchExpenses extends Component {
                                     <select class="form-control" id="ExpensesStatus">
                                         <option >Paid</option>
                                         <option >UnPaid</option>
+
                                     </select></span>
                             </div>
                         </div>
