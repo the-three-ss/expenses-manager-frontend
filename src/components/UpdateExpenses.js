@@ -82,7 +82,7 @@ class UpdateExpenses extends Component {
 
     render() {
         return (
-
+<div className="container">
             <div className="addExpenses">
                 <div className="row divheight">
                     <div class="col-md-4 col-sm-6 col-xs-6">
@@ -158,6 +158,7 @@ class UpdateExpenses extends Component {
                     </div>
 
                 </div>
+            </div>
             </div>
         );
     }
