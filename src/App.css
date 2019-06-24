@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  /* background-color: rgb(92, 196, 196); */
+  background-color: rgb(92, 196, 196);
 }
 
 .App-logo {
@@ -136,8 +136,13 @@
   background-color: lightgray;  
 }
 
-.updateExpenses{
-  background-color: coral;
+/* .updateExpenses{
+  background-color: coral; */
+.button btn btn-lg {
+  background-color: gray;
+  border-radius: 5px; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 2px solid #4CAF50; /* Green */
 }
 
   

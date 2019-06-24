@@ -123,7 +123,7 @@ class UpdateExpenses extends Component {
                             <input id="expDate" class="form-control" type="date" onChange={this.onDateChange} defaultValue={this.state.expenseDate} /></span>
                         </div>
                     </div>
-                    <div class="col-md-4 col-xs-6">
+                    <div class="col-md-4 col-sm-6">
                         <div class="form-group">
                             <span class="input-group-text" id="basic-addon1" for="PaymentType">Payment Type
                             <select class="form-control" id="PaymentType" onChange={this.onPaymentChanged} value={this.state.paymentType}>
@@ -135,7 +135,7 @@ class UpdateExpenses extends Component {
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-xs-6">
+                    <div class="col-md-4 col-sm-12">
                         <div class="form-group">
                             <span class="input-group-text" id="basic-addon1" for="ExpensesStatus">Status
                             <select class="form-control" id="ExpensesStatus" onChange={this.onStatusChanged} value={this.state.status}>
