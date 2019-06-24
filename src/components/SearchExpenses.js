@@ -27,7 +27,7 @@ class SearchExpenses extends Component {
 
                         <div class="col-md-3">
                             <button>
-                            <button type="button" class=".button4:hover {background-color: #e7e7e7;}">Search</button>
+                                <button type="button" class=".button4:hover {background-color: #e7e7e7;}">Search</button>
                             </button>
                         </div>
                     </div>
