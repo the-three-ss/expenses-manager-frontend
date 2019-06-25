@@ -82,19 +82,19 @@ class UpdateExpenses extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div class="container">
                 <div className="addExpenses">
                     <div className="row divheight">
-                        <div class="col-md-4 col-sm-6 col-xs-6">
+                        <div class="col-md-4 col-sm-12">
                             <div >
                                 <span class="input-group-text" id="basic-addon1">Expenses Name
-                            <input type="text" class="form-control" id="expenseName" onChange={this.onTextChanged} value={this.state.expenseName} /></span>
+                                <input type="text" class="form-control" id="expenseName" onChange={this.onTextChanged} value={this.state.expenseName} /></span>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <span class="input-group-text" id="basic-addon1" for="ExpensesCategory">Category
-                                <select class="form-control" id="ExpensesCategory" onChange={this.onCategoryChanged} value={this.state.category}>
+                                    <select class="form-control" id="ExpensesCategory" onChange={this.onCategoryChanged} value={this.state.category}>
                                         <option>Select</option>
                                         <option>Food</option>
                                         <option>Travel</option>
@@ -106,7 +106,7 @@ class UpdateExpenses extends Component {
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-12">
                             <div>
                                 <span class="input-group-text" id="basic-addon1">Amount
                             <input type="text" class="form-control" id="amount" onChange={this.onAmountChanged} placeholder="0" value={this.state.expenseAmount} /></span>
@@ -116,17 +116,17 @@ class UpdateExpenses extends Component {
                     </div>
 
                     <div className="row divheight">
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-xs-12 col-sm-12">
                             <div >
                                 <span class="input-group-text" id="basic-addon1">Date
                             <input id="expDate" class="form-control" type="date" onChange={this.onDateChange}
                                         value={new Date(this.state.expenseDate).toISOString().substr(0, 10)} /></span>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="form-group">
-                            <span class="input-group-text" id="basic-addon1" for="PaymentType">Payment Type
+
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <span class="input-group-text" id="basic-addon1" for="PaymentType">Payment Type
                             <select class="form-control" id="PaymentType" onChange={this.onPaymentChanged} value={this.state.paymentType}>
                                         <option>Select</option>
                                         <option>Card</option>
@@ -136,7 +136,7 @@ class UpdateExpenses extends Component {
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-xs-6">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <span class="input-group-text" id="basic-addon1" for="ExpensesStatus">Status
                             <select class="form-control" id="ExpensesStatus" onChange={this.onStatusChanged} value={this.state.status}>
@@ -147,19 +147,21 @@ class UpdateExpenses extends Component {
                             </div>
                         </div>
                     </div>
+                
                     <div className="row divheight">
-                        <div class="col-md-7 col-sm-6 col-xs-6">
-                            <span class="input-group-text" id="basic-addon1" for="ExpNotes">Notes
+                        <div class="col-md-8 col-sm-12">
+                        <span class="   input-group-text" id="basic-addon1" for="ExpNotes">Notes
                         <textarea class="form-control" id="ExpNotes" rows="1" onChange={this.onNotesChanged} value={this.state.notes}></textarea></span>
-                        </div>
-
-
-                        <div class="col-md-1 col-sm-6">
-                            <button type="button" class="btn btn-lg" onClick={this.onUpdateClicked}>Update</button>
-                        </div>
-
                     </div>
+
+
+                    <div class="col-md-1 col-sm-6">
+                        <button type="button" class="btn btn-lg" onClick={this.onUpdateClicked}>Update</button>
+                    </div>
+
                 </div>
+                </div>
+            </div>
         );
     }
 }
