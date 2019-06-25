@@ -16,7 +16,7 @@ class App extends Component {
 
     setEditing: false,
     selectedExpense: '',
-    images: ["/images/OPWC-3.jpg","/images/logo.jpg"]
+    images: ["/images/OPWC-3.jpg", "/images/logo.jpg"]
   };
 
   apiEndpoint = "https://qlv8kacvn9.execute-api.eu-west-2.amazonaws.com/dev/expenses";
@@ -99,6 +99,8 @@ class App extends Component {
 
   }
 
+
+
   updateExpenses = (updateExpName, updateCategory, updateExpDate, updatAmount, updatePaymentType, updateNotes, updateStatus, expensesId) => {
 
     const updatedExpenses = {
@@ -121,65 +123,79 @@ class App extends Component {
     this.setState({ setEditing: false });
   }
 
+
+  searchExpenses = (toDate, fromDate, status) => {
+
+    const currentListofExpenses = this.state.listofItems;
+    let filterDate = currentListofExpenses.filter((item) => {
+
+      let date = new Date(item.exp_date)
+      date = date.toISOString().slice(0, 10);
+
+      return ((date >= fromDate) && (date <= toDate) && (item.status === status))
+    });
+    this.setState({ listofItems: filterDate });
+
+  }
   render() {
     return (
-        <div className="container">
+      <div className="container">
         <div>  <logo /></div>
-      
-          <div className="row">
-            <Header />
-          </div>
-          <div><br></br></div>
-          <div className="row">
+
+        <div className="row">
+          <Header />
+        </div>
+        <div><br></br></div>
+        <div className="row">
+          {
+            this.state.setEditing ? (
+              <UpdateExpenses parentState={this.state.selectedExpense} updateExpenses={this.updateExpenses.bind(this)} />
+            ) : (
+                <AddExpenses addExpenses={this.addExpenses.bind(this)} />
+              )
+          }
+        </div>
+        <div><br></br></div>
+        <div className="row">
+          <SearchExpenses searchExpenses={this.searchExpenses.bind(this)} />
+        </div>
+        <div><br></br></div>
+        <div className="row expensesList ">
+          <div className="col bold">Expenses</div>
+          <div className="col bold">Exp Date</div>
+          <div className="col bold">Category</div>
+          <div className="col bold">Status</div>
+          <div className="col bold">Payment</div>
+          <div className="col bold">Notes</div>
+          <div className="col bold">Amount</div>
+          <div className="coll bold">Update</div>
+          <div className="coll bold">Delete</div>
+          <div className="container ">
             {
-              this.state.setEditing ? (
-                <UpdateExpenses parentState={this.state.selectedExpense} updateExpenses={this.updateExpenses.bind(this)} />
-              ) : (
-                  <AddExpenses addExpenses={this.addExpenses.bind(this)} />
-                )
+              this.state.listofItems.map((item, index) => {
+                return <ExpensesList
+                  expenses_name={item.expenses_name}
+                  exp_date={item.exp_date}
+                  category_name={item.category_name}
+                  status={item.status}
+                  payment_type={item.payment_type}
+                  notes={item.notes}
+                  amount={item.amount}
+                  delete={this.onDeleteClicked}
+                  key={index}
+                  rowNum={index}
+                  user_id={item.user_id}
+                  expenses_id={item.expenses_id}
+                  update={this.onUpdateClicked}
+                />
+              })
             }
           </div>
-          <div><br></br></div>
-          <div className="row">
-            <SearchExpenses />
-          </div>
-          <div><br></br></div>
-          <div className="row expensesList ">
-            <div className="col bold">Expenses</div>
-            <div className="col bold">Exp Date</div>
-            <div className="col bold">Category</div>
-            <div className="col bold">Status</div>
-            <div className="col bold">Payment</div>
-            <div className="col bold">Notes</div>
-            <div className="col bold">Amount</div>
-            <div className="coll bold">Update</div>
-            <div className="coll bold">Delete</div>
-            <div className="container ">
-              {
-                this.state.listofItems.map((item, index) => {
-                  return <ExpensesList
-                    expenses_name={item.expenses_name}
-                    exp_date={item.exp_date}
-                    category_name={item.category_name}
-                    status={item.status}
-                    payment_type={item.payment_type}
-                    notes={item.notes}
-                    amount={item.amount}
-                    delete={this.onDeleteClicked}
-                    key={index}
-                    rowNum={index}
-                    user_id={item.user_id}
-                    expenses_id={item.expenses_id}
-                    update={this.onUpdateClicked}
-                  />
-                })
-              }
-            </div>
-          </div>
-          <div className="row total">
-            <ExpensesTotal totalAmount={this.state.total}
-            /></div>
         </div>
+        <div className="row total">
+          <ExpensesTotal totalAmount={this.state.total}
+          /></div>
+      </div>
     );
 
   }
